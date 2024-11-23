@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  src: url("./assets/font/Dune_Rise.otf");
+  font-family: "dune";
+}
+.logo {
+  font-family: "dune";
+  @apply text-2xl text-center;
+}
+
+.sidebar {
+  /* background-color: rgb(95, 0, 0); */
+  @apply w-full h-screen bg-gray-700 text-white p-2 sticky top-0;
+}
+
+.page-layout {
+  @apply grid grid-cols-pageLayoutGrid;
+}
+.students-grid {
+  @apply grid grid-cols-3 text-sm font-semibold p-2;
+}
+.students-grid.content {
+  @apply font-normal py-1;
+}
+.input-label {
+  @apply text-sm;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+tr.title-row {
+  @apply bg-gray-700;
+}
+th {
+  @apply uppercase text-center;
+}
+th.smallie {
+  @apply -rotate-90 max-w-6 text-center;
+}
+th,
+td {
+  border: 1px solid black;
+  padding: 3px;
+  text-align: left;
+}
+.no-border-input {
+  @apply border-none outline-none max-w-20;
+}
+.detail-span {
+  @apply border-dotted border-b border-black px-2 capitalize;
+}
+.title-span {
+  @apply font-semibold mr-1;
+}
+.text-cont {
+  @apply grid;
+  grid-template-columns: auto 1fr;
+}
+.result-content-names {
+  @apply grid gap-x-2;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.result-content-names > div {
+  @apply grid;
+  grid-template-columns: auto 1fr;
+}
+
+.result-top-grid {
+  @apply grid grid-cols-7 text-sm border border-black mb-1;
+}
+.result-top-grid > div {
+  @apply p-3 border border-black;
+}
+
+.result-top-grid > div > div {
+  @apply flex justify-between;
+}
