@@ -1,6 +1,8 @@
 import SingleTrait from "../atoms/SingleTrait";
 
-const Traits = () => {
+const Traits = ({ trait }) => {
+  console.log(trait);
+
   return (
     <div>
       <table>
@@ -10,18 +12,11 @@ const Traits = () => {
         </tr>
 
         <tbody className="text-xs">
-          <SingleTrait />
-          <SingleTrait />
-          <SingleTrait />
-          <SingleTrait />
-          <SingleTrait />
-          <SingleTrait />
-          <SingleTrait />
-          <SingleTrait />
-          <SingleTrait />
-          <SingleTrait />
-          <SingleTrait />
-          <SingleTrait />
+          {Object.entries(trait).map(([key, value]) => {
+            if (key === "_id") return;
+
+            return <SingleTrait key={key} rating={value} trait={key} />;
+          })}
         </tbody>
       </table>
     </div>

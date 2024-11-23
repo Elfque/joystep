@@ -29,7 +29,6 @@ const caSchema = new mongoose.Schema({
   second: { type: Number, default: 0 },
   third: { type: Number, default: 0 },
 });
-// forth: { type: Number, default: 0 },
 
 const subjectSchema = new mongoose.Schema({
   CA: caSchema,
@@ -52,6 +51,20 @@ const holidaySchema = new mongoose.Schema({
   next_term_fee: { type: Number, default: 0 },
   next_term_begin: { type: Number, default: 0 },
   term_end: { type: Number, default: 0 },
+});
+
+const optionSchema = mongoose.Schema({
+  position: { type: Number, default: 0 },
+  positionClass: { type: Number, default: 0 },
+  overallTotalCsore: { type: Number, default: 0 },
+  averageScore: { type: Number, default: 0 },
+  highestAverage: { type: Number, default: 0 },
+
+  studentNo: { type: Number, default: 0 },
+  studentAverage: { type: String, default: 0 },
+  overallPerformance: { type: String, default: "" },
+  teacher_comment: { type: String, default: "" },
+  principal_comment: { type: String, default: "" },
 });
 
 const termSchema = new mongoose.Schema({
@@ -86,6 +99,7 @@ const termSchema = new mongoose.Schema({
   holiday: holidaySchema,
   traits: traitSchema,
   psychologicalTrait: psychologicalSchema,
+  options: optionSchema,
 });
 
 const resultSchema = new mongoose.Schema({

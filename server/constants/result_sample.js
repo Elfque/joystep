@@ -24,6 +24,7 @@ const psychologicalObject = {
   "creative art": 0,
   "verbal fluency": 0,
 };
+
 const traitObject = {
   punctuality: 0,
   behavior: 0,
@@ -37,6 +38,19 @@ const traitObject = {
   politeness: 0,
   initiative: 0,
   "attitude to school": 0,
+};
+
+const optionsObject = {
+  position: 0,
+  positionClass: 0,
+  overallTotalCsore: 0,
+  averageScore: 0,
+  highestAverage: 0,
+  studentNo: 0,
+  overallPerformance: "",
+  studentAverage: 0,
+  teacher_comment: "",
+  principal_comment: "",
 };
 
 const termObject = {
@@ -71,6 +85,7 @@ const termObject = {
   holiday: { debt: 0, next_term_fee: 0, next_term_begin: 0, term_end: 0 },
   traits: traitObject,
   psychologicalTrait: psychologicalObject,
+  options: optionsObject,
 };
 
 const result = {

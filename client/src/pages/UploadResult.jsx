@@ -1,11 +1,15 @@
 import PageLayout from "../layout/PageLayout";
 import { useEffect, useState } from "react";
 import { getRequest, postRequest } from "../utils/requests";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import AttendanceReport from "../components/AttendanceReport";
 import toast from "react-hot-toast";
+import StudentReport from "../components/StudentReport";
+import Schoolfees from "../components/Schoolfees";
+import Comments from "../components/Comments";
 
 const UploadResult = () => {
+  const navigate = useNavigate();
   const { studentId, term } = useParams();
 
   const [details, setDetails] = useState(null);
@@ -59,13 +63,12 @@ const UploadResult = () => {
   const handleSubmit = () => {
     toast.loading("Updating Result");
     postRequest(`/result/${details._id}`, { result: details.result })
-      .then((data) => {
+      .then(() => {
         toast.success("Result Updated");
-        console.log(data);
+        navigate(-1);
       })
       .catch((err) => {
         toast.error("Result Updating Failed");
-        // console.log(err.response);
       });
   };
 
@@ -201,20 +204,47 @@ const UploadResult = () => {
 
         <div className="my-4">
           {details && (
-            <AttendanceReport
-              report={details?.result[term]?.attendace_res}
-              handleChange={handleChange}
-            />
+            <>
+              <AttendanceReport
+                report={details?.result[term]?.attendace_res}
+                handleChange={handleChange}
+              />
+
+              <StudentReport
+                options={details?.result[term]?.options}
+                handleChange={handleChange}
+              />
+
+              <Schoolfees
+                options={details?.result[term]?.holiday}
+                handleChange={handleChange}
+              />
+
+              <Comments
+                options={details?.result[term]?.options}
+                handleChange={handleChange}
+              />
+            </>
           )}
         </div>
 
         <div className="grid my-4 gap-4">
           <table>
             <tr>
-              <th className="text-center">AFFECTIVE TRAITS</th>
+              <th className="text-center" rowSpan={2}>
+                AFFECTIVE TRAITS
+              </th>
               <th className="text-center" colSpan={5}>
                 RATING
               </th>
+            </tr>
+
+            <tr>
+              <th className="text-center">1</th>
+              <th className="text-center">2</th>
+              <th className="text-center">3</th>
+              <th className="text-center">4</th>
+              <th className="text-center">5</th>
             </tr>
             {details &&
               Object.entries(details.result[term].traits).map(
@@ -244,11 +274,22 @@ const UploadResult = () => {
 
           <table>
             <tr>
-              <th className="text-center">PSYCHOLOGICAL TRAIT</th>
+              <th className="text-center" rowSpan={2}>
+                PSYCHOLOGICAL TRAIT
+              </th>
               <th className="text-center" colSpan={5}>
                 RATING
               </th>
             </tr>
+
+            <tr>
+              <th className="text-center">1</th>
+              <th className="text-center">2</th>
+              <th className="text-center">3</th>
+              <th className="text-center">4</th>
+              <th className="text-center">5</th>
+            </tr>
+
             {details &&
               Object.entries(details.result[term].psychologicalTrait).map(
                 ([key, value]) => {

@@ -21,8 +21,8 @@ const SingleStudent = () => {
         setDetails(result);
       })
       .catch((err) => {
-        toast.success("Student Loading Failed");
-        console.log(err.response);
+        toast.error("Student Loading Failed");
+        // console.log(err.response);
       });
   }, []);
 
@@ -111,6 +111,64 @@ const SingleStudent = () => {
           </tbody>
         </table>
 
+        <div className="my-4">
+          <table>
+            <tr>
+              <th className="text-center">STUDENT DETAILS</th>
+              <th className="text-center">VALUE</th>
+            </tr>
+
+            <tr>
+              <td className="uppercase">position</td>
+              <td className="text-center">
+                {details?.result[currentTerm].options.position}
+              </td>
+            </tr>
+
+            <tr>
+              <td className="uppercase">Overall Total Score</td>
+              <td className="text-center">
+                {details?.result[currentTerm].options.overallTotalCsore}
+              </td>
+            </tr>
+
+            <tr>
+              <td className="uppercase">Average Score</td>
+              <td className="text-center">
+                {details?.result[currentTerm].options.averageScore}
+              </td>
+            </tr>
+
+            <tr>
+              <td className="uppercase">Class Population</td>
+              <td className="text-center">
+                {details?.result[currentTerm].options.studentNo}
+              </td>
+            </tr>
+
+            <tr>
+              <td className="uppercase">Overall Performance</td>
+              <td className="text-center">
+                {details?.result[currentTerm].options.overallPerformance}
+              </td>
+            </tr>
+
+            <tr>
+              <td className="uppercase">Teacher's Comment</td>
+              <td className="text-center">
+                {details?.result[currentTerm].options.teacher_comment}
+              </td>
+            </tr>
+
+            <tr>
+              <td className="uppercase">Principal's Comment</td>
+              <td className="text-center">
+                {details?.result[currentTerm].options.principal_comment}
+              </td>
+            </tr>
+          </table>
+        </div>
+
         <div className="grid grid-cols-2 my-4 gap-4">
           <table>
             <tr>
@@ -194,3 +252,20 @@ export default SingleStudent;
               )
             )} */
 }
+
+// {
+//   details &&
+//     Object.entries(details.result[currentTerm].options ?? {}).map(
+//       ([key, value]) => {
+//         if (key === "_id") {
+//           return;
+//         }
+//         return (
+//           <tr>
+//             <td className="uppercase">{key}</td>
+//             <td className="text-center">{value === 0 ? "" : value}</td>
+//           </tr>
+//         );
+//       }
+//     );
+// }

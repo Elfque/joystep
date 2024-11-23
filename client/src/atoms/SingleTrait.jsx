@@ -1,8 +1,8 @@
-const SingleTrait = () => {
+const SingleTrait = ({ trait, rating }) => {
   return (
     <tr>
-      <td>Punctuality</td>
-      <td>5</td>
+      <td className="uppercase">{trait}</td>
+      <td className="text-center">{rating}</td>
     </tr>
   );
 };
