@@ -5,7 +5,7 @@ import Traits from "../components/Traits";
 import Psychomotor from "../components/Psychomotor";
 import KeyMeaning from "../components/KeyMeaning";
 import ScoreRange from "../components/ScoreRange";
-import schoolLogo from "../assets/logo.PNG";
+import schoolLogo from "../assets/logo.png";
 import toast from "react-hot-toast";
 
 const ResultSheet = () => {
