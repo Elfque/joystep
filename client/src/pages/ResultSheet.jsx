@@ -158,17 +158,15 @@ const ResultSheet = () => {
             <tr className="h-20 text-center">
               <th className="text-center">Subject</th>
               <th className="text-center">
-                1st <br /> TEST <br /> <span className="text-[10px]">(10)</span>
+                1st <br /> TEST
               </th>
               <th className="text-center">
-                2nd <br /> TEST <br /> <span className="text-[10px]">(10)</span>
+                2nd <br /> TEST
               </th>
               <th className="text-center">
-                3rd <br /> TEST <br /> <span className="text-[10px]">(10)</span>
+                3rd <br /> TEST
               </th>
-              <th className="smallie">
-                Exam <span className="text-[10px]">(60)</span>
-              </th>
+              <th className="smallie">Exam</th>
               <th className="smallie">
                 Total <br /> scores
               </th>

@@ -84,12 +84,26 @@ router.get("/class/:studentClass", async (req, res) => {
     let sessions = await sessionModel.find({}).sort({ createdAt: -1 });
     const student = await studentModel
       .find({ session: sessions[0]._id, studentClass })
-      .populate("session");
+      .populate("session")
+      .sort({ firstName: 1 });
 
     res.send(student);
   } catch (error) {
     console.log(error.message);
     res.send("Server Error");
+  }
+});
+
+router.delete("/:studentId", async (req, res) => {
+  const { studentId } = req.params;
+
+  try {
+    await studentModel.deleteOne({ _id: studentId });
+    await resultModel.deleteMany({ student: studentId });
+
+    res.send({ msg: "Success" });
+  } catch (error) {
+    res.send({ msg: "Failed" });
   }
 });
 

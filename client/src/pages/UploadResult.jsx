@@ -116,6 +116,7 @@ const UploadResult = () => {
                     item === "attendace_res" ||
                     item === "traits" ||
                     item === "psychologicalTrait" ||
+                    item === "options" ||
                     item === "holiday"
                   ) {
                     return;

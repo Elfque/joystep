@@ -17,6 +17,8 @@ const SingleStudent = () => {
     toast.loading("Loading Student");
     getRequest(`/students/${studentId}`)
       .then(({ result }) => {
+        console.log(result);
+
         toast.success("Student Loaded");
         setDetails(result);
       })
@@ -79,6 +81,9 @@ const SingleStudent = () => {
               <th className="text-center">1st CA</th>
               <th className="text-center">2nd CA</th>
               <th className="text-center">3rd CA</th>
+              <th className="text-center">Class Highest</th>
+              <th className="text-center">Class Lowest</th>
+              <th className="text-center">Class Average</th>
               <th className="text-center">Exam</th>
             </tr>
           </thead>
@@ -92,6 +97,7 @@ const SingleStudent = () => {
                     item === "attendace_res" ||
                     item === "traits" ||
                     item === "psychologicalTrait" ||
+                    item === "options" ||
                     item === "holiday"
                   ) {
                     return;
@@ -103,6 +109,9 @@ const SingleStudent = () => {
                       <td className="text-center">{value?.CA?.first}</td>
                       <td className="text-center">{value?.CA?.second}</td>
                       <td className="text-center">{value?.CA?.third}</td>
+                      <td className="text-center">{value.class_highest}</td>
+                      <td className="text-center">{value.class_lowest}</td>
+                      <td className="text-center">{value.class_average}</td>
                       <td className="text-center">{value.exam}</td>
                     </tr>
                   );
@@ -121,49 +130,49 @@ const SingleStudent = () => {
             <tr>
               <td className="uppercase">position</td>
               <td className="text-center">
-                {details?.result[currentTerm].options.position}
+                {details?.result[currentTerm]?.options?.position}
               </td>
             </tr>
 
             <tr>
               <td className="uppercase">Overall Total Score</td>
               <td className="text-center">
-                {details?.result[currentTerm].options.overallTotalCsore}
+                {details?.result[currentTerm]?.options?.overallTotalCsore}
               </td>
             </tr>
 
             <tr>
               <td className="uppercase">Average Score</td>
               <td className="text-center">
-                {details?.result[currentTerm].options.averageScore}
+                {details?.result[currentTerm]?.options?.averageScore}
               </td>
             </tr>
 
             <tr>
               <td className="uppercase">Class Population</td>
               <td className="text-center">
-                {details?.result[currentTerm].options.studentNo}
+                {details?.result[currentTerm]?.options?.studentNo}
               </td>
             </tr>
 
             <tr>
               <td className="uppercase">Overall Performance</td>
               <td className="text-center">
-                {details?.result[currentTerm].options.overallPerformance}
+                {details?.result[currentTerm]?.options?.overallPerformance}
               </td>
             </tr>
 
             <tr>
               <td className="uppercase">Teacher's Comment</td>
               <td className="text-center">
-                {details?.result[currentTerm].options.teacher_comment}
+                {details?.result[currentTerm]?.options?.teacher_comment}
               </td>
             </tr>
 
             <tr>
               <td className="uppercase">Principal's Comment</td>
               <td className="text-center">
-                {details?.result[currentTerm].options.principal_comment}
+                {details?.result[currentTerm]?.options?.principal_comment}
               </td>
             </tr>
           </table>
@@ -175,8 +184,9 @@ const SingleStudent = () => {
               <th className="text-center">AFFECTIVE TRAITS</th>
               <th className="text-center">RATING</th>
             </tr>
-            {details &&
-              Object.entries(details.result[currentTerm].traits).map(
+
+            {details?.result[currentTerm]?.traits &&
+              Object.entries(details?.result[currentTerm]?.traits).map(
                 ([key, value]) => {
                   if (key === "_id") {
                     return;
@@ -198,7 +208,7 @@ const SingleStudent = () => {
               <th className="text-center">PSYCHOLOGICAL TRAIT</th>
               <th className="text-center">RATING</th>
             </tr>
-            {details &&
+            {details?.result[currentTerm]?.psychologicalTrait &&
               Object.entries(
                 details.result[currentTerm].psychologicalTrait
               ).map(([key, value]) => {

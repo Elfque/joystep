@@ -1,7 +1,7 @@
 const navLinks = [
   { path: "/", text: "Home" },
-  { path: "/student/create", text: "Create Student" },
-  { path: "/session/create", text: "Create Session" },
+  { path: "/student/create", text: "New Student" },
+  { path: "/session/create", text: "New Session" },
 ];
 
 export default navLinks;
