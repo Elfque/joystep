@@ -49,7 +49,7 @@ const attendanceSchema = new mongoose.Schema({
 const holidaySchema = new mongoose.Schema({
   debt: { type: Number, default: 0 },
   next_term_fee: { type: Number, default: 0 },
-  next_term_begin: { type: Number, default: 0 },
+  next_term_begin: { type: String, default: 0 },
   term_end: { type: Number, default: 0 },
 });
 
@@ -71,20 +71,10 @@ const termSchema = new mongoose.Schema({
   mathematics: subjectSchema,
   "english language": subjectSchema,
   "cultural and creative art": subjectSchema,
-  french: subjectSchema,
-  "quantitative reasoning": subjectSchema,
-  "verbal reasoning": subjectSchema,
-  "water and environmental sanitation": subjectSchema,
-  handwriting: subjectSchema,
-  "food and nutrition": subjectSchema,
-  "social and moral development": subjectSchema,
-  "protection issue": subjectSchema,
-  "nigerian language": subjectSchema,
   "nigerian language": subjectSchema,
   "basic science": subjectSchema,
   "basic technology": subjectSchema,
   "physical and health education": subjectSchema,
-  "information technology": subjectSchema,
   "home economics": subjectSchema,
   "agric science": subjectSchema,
   religion: subjectSchema,
@@ -101,6 +91,16 @@ const termSchema = new mongoose.Schema({
   psychologicalTrait: psychologicalSchema,
   options: optionSchema,
 });
+
+// french: subjectSchema,
+// "quantitative reasoning": subjectSchema,
+// "verbal reasoning": subjectSchema,
+// "water and environmental sanitation": subjectSchema,
+// handwriting: subjectSchema,
+// "food and nutrition": subjectSchema,
+// "social and moral development": subjectSchema,
+// "protection issue": subjectSchema,
+// "information technology": subjectSchema,
 
 const resultSchema = new mongoose.Schema({
   first: termSchema,

@@ -7,6 +7,7 @@ import KeyMeaning from "../components/KeyMeaning";
 import ScoreRange from "../components/ScoreRange";
 import schoolLogo from "../assets/logo.png";
 import toast from "react-hot-toast";
+import { formatNumber } from "../utils/functions";
 
 const ResultSheet = () => {
   const { studentId, term } = useParams();
@@ -92,12 +93,14 @@ const ResultSheet = () => {
         <div className="col-span-2">
           <div>
             <div>Next Term Fee:</div>
-            <div>{details?.result[term].holiday.next_term_fee}</div>
+            <div>
+              ₦{formatNumber(details?.result[term].holiday.next_term_fee ?? 0)}
+            </div>
           </div>
 
           <div>
             <div>Outstanding Fee:</div>
-            <div>{details?.result[term].holiday.debt}</div>
+            <div>₦{formatNumber(details?.result[term].holiday.debt ?? 0)}</div>
           </div>
         </div>
 
@@ -192,6 +195,16 @@ const ResultSheet = () => {
                     item === "attendace_res" ||
                     item === "traits" ||
                     item === "psychologicalTrait" ||
+                    item === "options" ||
+                    item === "verbal reasoning" ||
+                    item === "handwriting" ||
+                    item === "food and nutrition" ||
+                    item === "protection issue" ||
+                    item === "french" ||
+                    item === "social and moral development" ||
+                    item === "quantitative reasoning" ||
+                    item === "water and environmental sanitation" ||
+                    item === "information technology" ||
                     item === "holiday"
                   ) {
                     return;
@@ -215,7 +228,7 @@ const ResultSheet = () => {
                       <td className="text-center">{value.class_average}</td>
                       <td className="text-center">
                         {value?.remark?.trim() === ""
-                          ? "---"
+                          ? "Very Good"
                           : value?.remark?.trim()}
                       </td>
                     </tr>
