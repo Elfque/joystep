@@ -7,7 +7,7 @@ import KeyMeaning from "../components/KeyMeaning";
 import ScoreRange from "../components/ScoreRange";
 import schoolLogo from "../assets/logo.png";
 import toast from "react-hot-toast";
-import { formatNumber } from "../utils/functions";
+import { formatNumber, grader } from "../utils/functions";
 
 const ResultSheet = () => {
   const { studentId, term } = useParams();
@@ -143,13 +143,13 @@ const ResultSheet = () => {
           <div>
             <div>Number of Times Present</div>
             <div className="pl-4">
-              {details?.result[term]?.attendace_res?.opened}
+              {details?.result[term]?.attendace_res?.present}
             </div>
           </div>
           <div>
             <div>Number of Times Absent</div>
             <div className="pl-4">
-              {details?.result[term]?.attendace_res?.opened}
+              {details?.result[term]?.attendace_res?.absent}
             </div>
           </div>
         </div>
@@ -228,7 +228,12 @@ const ResultSheet = () => {
                       <td className="text-center">{value.class_average}</td>
                       <td className="text-center">
                         {value?.remark?.trim() === ""
-                          ? "Very Good"
+                          ? grader(
+                              value?.CA?.first +
+                                value?.CA?.second +
+                                value?.CA?.third +
+                                value?.exam
+                            )
                           : value?.remark?.trim()}
                       </td>
                     </tr>

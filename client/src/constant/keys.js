@@ -12,7 +12,7 @@ const grades = [
   { grade: "C", range: "50% - 59%", meaning: "good" },
   { grade: "D", meaning: "pass", range: "40% - 49%" },
   { grade: "E", meaning: "poor", range: "30% - 39%" },
-  { grade: "F", meaning: "fail", range: "0% - 39%" },
+  { grade: "F", meaning: "fail", range: "0% - 29%" },
 ];
 
 export { keys, grades };
