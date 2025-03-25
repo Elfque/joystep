@@ -82,8 +82,10 @@ router.get("/class/:studentClass", async (req, res) => {
 
   try {
     let sessions = await sessionModel.find({}).sort({ createdAt: -1 });
+    // console.log(sessions.map((item) => item._id));
+    // session: sessions[0]._id;
     const student = await studentModel
-      .find({ session: sessions[0]._id, studentClass })
+      .find({ studentClass })
       .populate("session")
       .sort({ firstName: 1 });
 
