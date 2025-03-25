@@ -31,7 +31,7 @@ const ResultSheet = () => {
   return (
     <div className="w-[55rem] mx-auto">
       <div className="flex gap-4 items-start">
-        <img src={schoolLogo} alt="" className="w-28" />
+        <img src={schoolLogo} alt="" className="w-28 grayscale" />
 
         <div className="">
           <div className="uppercase font-extrabold text-4xl">
@@ -96,6 +96,11 @@ const ResultSheet = () => {
             <div>
               ₦{formatNumber(details?.result[term].holiday.next_term_fee ?? 0)}
             </div>
+          </div>
+
+          <div>
+            <div>Excursion Fee:</div>
+            <div>₦{formatNumber(5000)}</div>
           </div>
 
           <div>

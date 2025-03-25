@@ -1,7 +1,7 @@
 import PageLayout from "../layout/PageLayout";
 import { useEffect, useState } from "react";
 import { getRequest } from "../utils/requests";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const terms = ["first", "second", "third"];
@@ -17,14 +17,11 @@ const SingleStudent = () => {
     toast.loading("Loading Student");
     getRequest(`/students/${studentId}`)
       .then(({ result }) => {
-        console.log(result);
-
         toast.success("Student Loaded");
         setDetails(result);
       })
       .catch((err) => {
         toast.error("Student Loading Failed");
-        // console.log(err.response);
       });
   }, []);
 
@@ -234,14 +231,15 @@ const SingleStudent = () => {
           >
             View Result Sheet
           </button>
-          <button
-            className="bg-gray-700 text-white mt-4 text-sm py-2 px-4 rounded-md font-semibold"
-            onClick={() =>
-              navigate(`/student/result/${studentId}/${currentTerm}`)
-            }
+
+          <Link
+            to={`/student/result/${studentId}/${currentTerm}`}
+            target="_blank"
           >
-            Update Result
-          </button>
+            <button className="bg-gray-700 text-white mt-4 text-sm py-2 px-4 rounded-md font-semibold">
+              Update Result
+            </button>
+          </Link>
         </div>
       </div>
     </PageLayout>

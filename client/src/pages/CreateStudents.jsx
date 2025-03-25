@@ -36,7 +36,7 @@ const CreateStudents = () => {
       .then((data) => {
         console.log(data.msg);
         toast.success("Student Created");
-        setPayLoad(initPayload);
+        setPayLoad({ ...initPayload, studentClass: studentClass ?? "" });
       })
       .catch(() => {
         toast.error("Student Creation Failed");
